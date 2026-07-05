@@ -331,13 +331,7 @@
          fill="url(#gM)"
          fill-opacity=".75"
          id="rect4" />
-      <circle
-         cx="60"
-         cy="60"
-         r="5"
-         fill="#8B5CF6"
-         opacity="1"
-         id="circle4" />
+
       <rect
          x="30"
          y="12"
@@ -556,32 +550,29 @@
          id="rect28" />
     </g>
   </g>
-  <!-- === SILICON WAFER MARKS === -->
-  <g
-     id="g29" />
   <!-- === TYPOGRAPHY === -->
   <text
      x="198.33008"
      y="319.5769"
      text-anchor="middle"
-     font-family="Inter, 'Segoe UI', sans-serif"
-     font-size="32.1587px"
-     font-weight="900"
-     letter-spacing="-0.5"
-     fill="url(#gT)"
-     id="text66"
-     style="fill:url(#gT);stroke-width:1.00496"
-     transform="scale(1.0049587,0.99506576)">NÚCLEO</text>
-  <text
-     x="197.58907"
-     y="351.58456"
-     text-anchor="middle"
-     font-family="Inter, 'Segoe UI', sans-serif"
-     font-size="26.268px"
-     font-weight="800"
-     letter-spacing="6"
-     fill="url(#gB)"
-     id="text67"
-     style="fill:url(#gB);stroke-width:1.01029"
-     transform="scale(1.0103005,0.98980452)">BYTE</text>
+      font-family="Inter, 'Segoe UI', sans-serif"
+      font-size="32.1587px"
+       font-weight="900"
+       letter-spacing="-0.5"
+        fill="url(#gT)"
+        id="text66"
+        style="fill:url(#gT);stroke-width:1.00496"
+        transform="scale(1.0049587,0.99506576)">NÚCLEO</text>
+     <text
+        x="197.58907"
+        y="351.58456"
+        text-anchor="middle"
+        font-family="Inter, 'Segoe UI', sans-serif"
+        font-size="26.268px"
+        font-weight="900"
+        letter-spacing="6"
+        fill="url(#gB)"
+        id="text67"
+        style="fill:url(#gB);stroke-width:1.01029"
+        transform="scale(1.0103005,0.98980452)">BYTE</text>
 </svg>
