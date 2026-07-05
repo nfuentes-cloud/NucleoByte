@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NÚCLEO BYTE — Servicios Informáticos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/nfuentes-cloud/NucleoByte/refs/heads/main/favicon.svg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --p-300:#A78BFA;--p-400:#8B5CF6;--p-500:#7C3AED;--p-600:#6D28D9;
+  --c-300:#67E8F9;--c-400:#22D3EE;--c-500:#06B6D4;
+  --a-400:#FBBF24;--a-500:#F59E0B;--a-600:#D97706;
+  --g-500:#10B981;--r-500:#EF4444;
+  --sm:8px;--md:12px;--lg:20px;--xl:28px;
+}
+@media(prefers-color-scheme:light){
+  :root{
+    --bg:#F5F0FF;--bg-alt:#FFFFFF;--card:#FFFFFF;--card-over:#F3EFFF;
+    --border:#DDD6FE;--border-light:#EDE9FE;
+    --text:#1A1630;--text-sec:#4C4A6D;--text-muted:#8B8BA7;
+    --glass:rgba(255,255,255,0.85);--glass-scroll:rgba(255,255,255,0.95);
+    --glow:0 4px 30px rgba(139,92,246,0.1);
+    --input:rgba(0,0,0,0.04);--alt-bg:rgba(0,0,0,0.02);
+    --tab-bg:rgba(0,0,0,0.04);--tab-act:rgba(139,92,246,0.1);
+    --wa-bg:#25D366;--wa-text:#fff;
+    --hero-glow:radial-gradient(ellipse 80% 60% at 50% -20%,rgba(139,92,246,0.1) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(6,182,212,0.08) 0%,transparent 50%);
+    --card-shadow:0 1px 3px rgba(0,0,0,0.04);
+    --premium-bg:linear-gradient(135deg,rgba(245,158,11,0.06),rgba(139,92,246,0.04));
+    --sweep:linear-gradient(90deg,transparent,rgba(139,92,246,.12),transparent);
+  }
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#0C0818;--bg-alt:#110D22;--card:#150F2A;--card-over:#1E1540;
+    --border:#2A1F54;--border-light:#1E1538;
+    --text:#FFFFFF;--text-sec:#C4B5FD;--text-muted:#6B7280;
+    --glass:rgba(12,8,24,0.85);--glass-scroll:rgba(12,8,24,0.95);
+    --glow:0 0 30px rgba(139,92,246,0.12),0 0 60px rgba(6,182,212,0.04);
+    --input:rgba(255,255,255,0.06);--alt-bg:rgba(255,255,255,0.03);
+    --tab-bg:rgba(255,255,255,0.04);--tab-act:rgba(139,92,246,0.15);
+    --wa-bg:#25D366;--wa-text:#fff;
+    --hero-glow:radial-gradient(ellipse 80% 60% at 50% -20%,rgba(139,92,246,0.15) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(6,182,212,0.08) 0%,transparent 50%);
+    --card-shadow:0 1px 3px rgba(0,0,0,0.2);
+    --premium-bg:linear-gradient(135deg,rgba(245,158,11,0.06),rgba(139,92,246,0.05));
+    --sweep:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
+  }
+}
+[data-theme=light]{
+  --bg:#F5F0FF!important;--bg-alt:#FFFFFF!important;--card:#FFFFFF!important;--card-over:#F3EFFF!important;
+  --border:#DDD6FE!important;--border-light:#EDE9FE!important;
+  --text:#1A1630!important;--text-sec:#4C4A6D!important;--text-muted:#8B8BA7!important;
+  --glass:rgba(255,255,255,0.85)!important;--glass-scroll:rgba(255,255,255,0.95)!important;
+  --glow:0 4px 30px rgba(139,92,246,0.1)!important;
+  --input:rgba(0,0,0,0.04)!important;--alt-bg:rgba(0,0,0,0.02)!important;
+  --tab-bg:rgba(0,0,0,0.04)!important;--tab-act:rgba(139,92,246,0.1)!important;
+  --hero-glow:radial-gradient(ellipse 80% 60% at 50% -20%,rgba(139,92,246,0.1) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(6,182,212,0.08) 0%,transparent 50%)!important;
+  --premium-bg:linear-gradient(135deg,rgba(245,158,11,0.06),rgba(139,92,246,0.04))!important;
+  --sweep:linear-gradient(90deg,transparent,rgba(139,92,246,.12),transparent)!important;
+}
+[data-theme=dark]{
+  --bg:#0C0818!important;--bg-alt:#110D22!important;--card:#150F2A!important;--card-over:#1E1540!important;
+  --border:#2A1F54!important;--border-light:#1E1538!important;
+  --text:#FFFFFF!important;--text-sec:#C4B5FD!important;--text-muted:#6B7280!important;
+  --glass:rgba(12,8,24,0.85)!important;--glass-scroll:rgba(12,8,24,0.95)!important;
+  --glow:0 0 30px rgba(139,92,246,0.12),0 0 60px rgba(6,182,212,0.04)!important;
+  --input:rgba(255,255,255,0.06)!important;--alt-bg:rgba(255,255,255,0.03)!important;
+  --tab-bg:rgba(255,255,255,0.04)!important;--tab-act:rgba(139,92,246,0.15)!important;
+  --hero-glow:radial-gradient(ellipse 80% 60% at 50% -20%,rgba(139,92,246,0.15) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 80% 80%,rgba(6,182,212,0.08) 0%,transparent 50%)!important;
+  --premium-bg:linear-gradient(135deg,rgba(245,158,11,0.06),rgba(139,92,246,0.05))!important;
+  --sweep:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent)!important;
+}
+html{scroll-behavior:smooth;scroll-padding-top:56px;scroll-snap-type:y mandatory}
+body{
+  font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.6;overflow-x:hidden;min-height:100vh;transition:background .3s,color .3s
+}
+::selection{background:var(--p-500);color:#fff}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--p-400);border-radius:10px}
+
+/* SCROLL PROGRESS */
+#scrollProg{position:fixed;top:0;left:0;height:2px;z-index:9999;background:linear-gradient(90deg,#8B5CF6,#06B6D4);transition:width .05s linear}
+a{color:var(--c-400);text-decoration:none}
+
+/* NAV */
+.navbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:var(--glass);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);transition:all .3s;
+  box-shadow:0 4px 30px rgba(0,0,0,.08)
+}
+.navbar::after{
+  content:'';position:absolute;bottom:-1px;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,#8B5CF6,#06B6D4,transparent);
+  opacity:1
+}
+.navbar.scrolled{background:var(--glass-scroll);box-shadow:0 4px 30px rgba(0,0,0,.15)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:56px}
+.nav-logo{display:flex;align-items:center;height:44px;transition:transform .3s ease}
+.nav-logo:hover{transform:scale(1.04)}
+.nav-logo img{height:100%;width:auto}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{
+  padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;
+  color:var(--text-muted);transition:all .2s;position:relative
+}
+.nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--tab-act)}
+
+.nav-links a i{margin-right:5px;font-size:11px}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;padding:8px}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer;padding:8px}
+.theme-btn{
+  background:none;border:none;color:var(--text-muted);cursor:pointer;
+  padding:8px;font-size:15px;transition:all .2s;display:flex;align-items:center;border-radius:8px
+}
+.theme-btn:hover{color:var(--c-400);background:var(--tab-act)}
+
+/* HERO */
+.hero{
+  height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:1;overflow:hidden;padding:100px 20px 60px;box-sizing:border-box
+}
+.hero-visual,.hero .hero-c{will-change:transform}
+
+/* GLOBAL DYNAMIC BG */
+#bgWrap{position:fixed;inset:0;z-index:0;pointer-events:none}
+#bgWrap .hero-bg{position:absolute;inset:0;background:var(--hero-glow)}
+#bgWrap .hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(139,92,246,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.04) 1px,transparent 1px);
+  background-size:60px 60px
+}
+.hero-main{position:relative;z-index:2;display:flex;align-items:center;gap:48px;max-width:900px;flex-wrap:wrap;justify-content:center}
+.hero-visual{flex-shrink:0;position:relative;width:200px;height:200px;animation:heroZoom .8s cubic-bezier(.16,1,.3,1) both}
+.hero-visual img,.hero-visual svg{width:100%;height:100%}
+.hero-ring{position:absolute;inset:-24px;border-radius:50%;border:1.5px solid rgba(139,92,246,.15);animation:ringPulse 3s ease-in-out infinite}
+.hero-ring:nth-child(2){inset:-40px;animation-delay:.5s;border-color:rgba(6,182,212,.1)}
+.hero-ring:nth-child(3){inset:-56px;animation-delay:1s;border-color:rgba(139,92,246,.08)}
+@keyframes ringPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.4}}
+#bgWrap .hero-orb{
+  position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none
+}
+#bgWrap .hero-orb:nth-child(2){width:400px;height:400px;background:rgba(139,92,246,.12);top:-5%;right:-8%;animation:orbFloat 12s ease-in-out infinite}
+#bgWrap .hero-orb:nth-child(3){width:350px;height:350px;background:rgba(6,182,212,.08);top:45%;left:-6%;animation:orbFloat 14s ease-in-out infinite reverse}
+#bgWrap .hero-orb:nth-child(4){width:300px;height:300px;background:rgba(139,92,246,.06);bottom:5%;right:5%;animation:orbFloat 16s ease-in-out infinite 2s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0)}33%{transform:translate(30px,-30px)}66%{transform:translate(-20px,20px)}}
+#bgWrap .hero-fdots{position:absolute;inset:0}
+#bgWrap .hero-dot{
+  position:absolute;width:4px;height:4px;border-radius:50%
+}
+#bgWrap .hero-dot:nth-child(1){top:12%;left:8%;background:var(--c-400);opacity:.3;animation:dotPulse 3s ease-in-out infinite}
+#bgWrap .hero-dot:nth-child(2){top:30%;left:4%;background:var(--p-400);opacity:.2;animation:dotPulse 4s ease-in-out infinite .5s}
+#bgWrap .hero-dot:nth-child(3){top:55%;left:10%;background:var(--c-400);opacity:.15;animation:dotPulse 3.5s ease-in-out infinite 1s}
+#bgWrap .hero-dot:nth-child(4){top:80%;left:6%;background:var(--p-400);opacity:.2;animation:dotPulse 4s ease-in-out infinite .3s}
+#bgWrap .hero-dot:nth-child(5){top:15%;right:6%;background:var(--p-400);opacity:.25;animation:dotPulse 4s ease-in-out infinite .3s}
+#bgWrap .hero-dot:nth-child(6){top:40%;right:3%;background:var(--c-400);opacity:.15;animation:dotPulse 3.2s ease-in-out infinite .8s}
+#bgWrap .hero-dot:nth-child(7){top:70%;right:8%;background:var(--p-400);opacity:.2;animation:dotPulse 4.5s ease-in-out infinite .2s}
+#bgWrap .hero-dot:nth-child(8){top:90%;right:4%;background:var(--c-400);opacity:.12;animation:dotPulse 3.8s ease-in-out infinite 2s}
+#bgWrap .hero-dot:nth-child(9){top:45%;left:50%;background:var(--p-400);opacity:.1;animation:dotPulse 5s ease-in-out infinite 1.5s}
+@keyframes dotPulse{0%,100%{opacity:.1;transform:scale(1)}50%{opacity:.4;transform:scale(1.8)}}
+.hero-main .hero-c{text-align:left;flex:1;min-width:260px;animation:heroFadeUp .6s .15s both}
+.hero-main .hero-c h1{font-size:clamp(34px,5vw,56px);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:6px}
+.hero-main .hero-c h1 span{background:linear-gradient(135deg,#8B5CF6,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-main .hero-c .hero-sub{font-size:clamp(15px,1.5vw,18px);color:var(--text-sec);font-weight:400;margin-bottom:24px;line-height:1.6}
+.hero-main .hero-c .hero-desc{font-size:13px;color:var(--text-muted);margin-bottom:24px;line-height:1.7;max-width:420px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.hero-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.hero-tags span{
+  padding:4px 10px;border-radius:6px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;
+  background:var(--tab-act);border:1px solid var(--border);color:var(--text-sec);opacity:0;
+  animation:heroFadeUp .4s both
+}
+.hero-tags span:nth-child(1){animation-delay:.4s}
+.hero-tags span:nth-child(2){animation-delay:.5s}
+.hero-tags span:nth-child(3){animation-delay:.6s}
+.hero-tags span:nth-child(4){animation-delay:.7s}
+.hero-scroll{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;animation:heroFadeUp .6s 1.2s both;cursor:pointer;text-decoration:none
+}
+.hero-scroll-arrow{
+  width:18px;height:18px;border-right:2px solid var(--p-400);border-bottom:2px solid var(--c-400);
+  transform:rotate(45deg);animation:scrBounce 2s ease-in-out infinite
+}
+@keyframes scrBounce{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.6}50%{transform:rotate(45deg) translate(4px,4px);opacity:1}}
+.hero-scroll-dots{display:flex;gap:4px}
+.hero-scroll-dots span{width:4px;height:4px;border-radius:50%;background:var(--text-muted);opacity:.3;transition:all .3s}
+.hero-scroll-dots span:nth-child(1){background:var(--p-400);opacity:.8}
+.hero-scroll:hover .hero-scroll-dots span:nth-child(2){opacity:.5}
+.hero-scroll-text{font-size:10px;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase;opacity:.5}
+@media(max-width:700px){
+  .hero-main{flex-direction:column;text-align:center;gap:28px}
+  .hero-main .hero-c{text-align:center}
+  .hero-main .hero-c .hero-desc{margin:0 auto 24px}
+  .hero-tags{justify-content:center}
+  .hero-btns{justify-content:center}
+  .hero-scroll{bottom:16px}
+  .hero-scroll-text{display:none}}
+@keyframes heroZoom{
+  0%{opacity:0;transform:scale(0.8);filter:blur(4px)}
+  60%{opacity:1;filter:blur(0)}
+  100%{transform:scale(1);filter:blur(0)}
+}
+@keyframes heroFadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes heroSweep{
+  0%{left:-20%;opacity:0}
+  20%{opacity:.6}
+  80%{opacity:.6}
+  100%{left:110%;opacity:0}
+}
+#bgWrap .hero-sweep{
+  position:absolute;top:0;left:-20%;width:60px;height:100%;z-index:1;
+  opacity:0;background:var(--sweep);
+  transform:skewX(-20deg);animation:heroSweep 2.2s .2s ease both
+}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:50px;
+  font-size:14px;font-weight:600;transition:all .25s;cursor:pointer;border:none;font-family:inherit;text-decoration:none
+}
+.btn-p{background:linear-gradient(135deg,#8B5CF6,#06B6D4);color:#fff;box-shadow:0 4px 20px rgba(139,92,246,.25)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.35)}
+.btn-s{background:var(--alt-bg);color:var(--text);border:1px solid var(--border)}
+.btn-s:hover{background:var(--tab-act);border-color:var(--p-400);transform:translateY(-2px)}
+.btn-sm{padding:10px 20px;font-size:13px}
+.btn-xs{padding:6px 14px;font-size:11px;border-radius:6px}
+.btn-wa{background:#25D366;color:#fff}
+.btn-wa:hover{background:#1EA952;transform:translateY(-2px)}
+.btn-d{background:var(--r-500);color:#fff}
+.btn-d:hover{opacity:.9}
+.btn-gh{background:transparent;color:var(--text-sec);border:1px solid var(--border)}
+.btn-gh:hover{color:var(--text);border-color:var(--p-400)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important}
+.btn-wa i{font-size:16px}
+
+/* SECTIONS */
+.section{padding:90px 20px;max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.section#catalogo{height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:0;padding-bottom:80px;overflow-y:auto;box-sizing:border-box;scroll-snap-align:start}
+.section#blog{height:100vh;box-sizing:border-box;scroll-snap-align:start}
+.hero,.section#catalogo{scroll-snap-align:start}
+.section-hd{text-align:center;margin-bottom:24px}
+.section-tg{
+  display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:50px;
+  background:var(--tab-act);border:1px solid var(--border);
+  font-size:11px;font-weight:600;color:var(--p-300);margin-bottom:14px;text-transform:uppercase;letter-spacing:.8px
+}
+.section-tg i{font-size:9px;color:var(--c-400)}
+.section-title{
+  font-size:clamp(26px,3.5vw,38px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:10px
+}
+.section-title span{background:linear-gradient(135deg,#8B5CF6,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-sub{color:var(--text-muted);font-size:15px;max-width:560px;margin:0 auto}
+
+/* CATEGORY TABS */
+.cat-tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
+.cat-tab{
+  padding:9px 18px;border-radius:50px;background:var(--tab-bg);border:1px solid var(--border);
+  color:var(--text-muted);font-size:12px;font-weight:500;cursor:pointer;transition:all .25s;font-family:inherit
+}
+.cat-tab:hover{color:var(--text-sec);border-color:var(--p-400)}
+.cat-tab.act{background:var(--tab-act);border-color:var(--p-400);color:var(--p-300)}
+.cat-tab i{margin-right:5px}
+
+/* SERVICE CARDS */
+.sv-grid{display:none;gap:18px;max-width:1050px;margin:0 auto}
+.sv-grid.act{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.sv-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--lg);
+  padding:26px;transition:all .35s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column;
+  box-shadow:var(--card-shadow)
+}
+.sv-card:nth-child(2){transition-delay:.08s}
+.sv-card:nth-child(3){transition-delay:.16s}
+.sv-card:nth-child(4){transition-delay:.24s}
+.sv-card:nth-child(5){transition-delay:.32s}
+.sv-card:nth-child(6){transition-delay:.4s}
+.sv-card:hover{border-color:var(--p-400);transform:translateY(-3px);box-shadow:var(--glow)}
+/* Premium card subtle psychology */
+.sv-card.premium{
+  border-color:var(--a-500);background:var(--premium-bg);
+  box-shadow:0 0 20px rgba(245,158,11,.06)
+}
+.sv-card.premium:hover{border-color:var(--a-500);box-shadow:0 0 30px rgba(245,158,11,.1)}
+.sv-card-hd{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+.sv-name{font-size:15px;font-weight:700;line-height:1.3}
+.sv-price{
+  font-size:26px;font-weight:800;letter-spacing:-1px;white-space:nowrap
+}
+.sv-price .cur{font-size:13px;font-weight:600;color:var(--text-muted)}
+.sv-card.premium .sv-price{color:var(--a-500)}
+.sv-desc{color:var(--text-muted);font-size:13px;line-height:1.6;margin-bottom:14px;flex:0}
+.sv-ft{list-style:none;margin-bottom:14px;flex:1}
+.sv-ft li{
+  padding:4px 0;font-size:12px;color:var(--text-sec);display:flex;align-items:flex-start;gap:7px
+}
+.sv-ft li i{font-size:10px;margin-top:3px}
+.sv-ft .ck{color:var(--g-500)}
+.sv-ft .cr{color:var(--text-muted)}
+.sv-dstc{
+  background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.12);
+  border-radius:var(--sm);padding:9px 12px;font-size:11px;color:var(--a-400);
+  margin-bottom:14px;line-height:1.5
+}
+.sv-dstc i{margin-right:5px;color:var(--a-500);font-size:10px}
+.sv-btn{
+  width:100%;padding:10px;border-radius:var(--sm);
+  background:linear-gradient(135deg,#8B5CF6,#06B6D4);color:#fff;
+  border:none;font-size:13px;font-weight:600;cursor:pointer;transition:all .25s;font-family:inherit
+}
+.sv-btn:hover{opacity:.92;transform:translateY(-1px)}
+.sv-btn.selected{background:linear-gradient(90deg,#059669,#10B981)}
+.sv-btn i{margin-right:5px}
+
+/* WHATSAPP BAR */
+.wa-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:900;
+  background:var(--card);border-top:1px solid var(--border);
+  padding:14px 20px;transform:translateY(100%);transition:transform .4s cubic-bezier(.22,1,.36,1);
+  box-shadow:0 -4px 20px rgba(0,0,0,.08)
+}
+.wa-bar.show{transform:translateY(0)}
+.wa-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.wa-bar-info{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.wa-bar-badge{
+  background:var(--tab-act);border:1px solid var(--border);
+  padding:8px 16px;border-radius:var(--sm);font-size:14px;font-weight:600;
+  display:flex;align-items:center;gap:8px
+}
+.wa-bar-badge .cat{color:var(--text-muted);font-weight:400}
+.wa-bar-badge i{margin-right:3px;color:var(--c-400);font-size:10px}
+.wa-bar-total{text-align:right}
+.wa-bar-total .label{font-size:11px;color:var(--text-muted)}
+.wa-bar-total .amount{font-size:22px;font-weight:800;color:var(--a-500)}
+.wa-bar .btn-wa{padding:12px 24px}
+
+/* MODAL */
+.modal-over{
+  position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.5);
+  backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px
+}
+.modal-over.open{display:flex}
+.modal{
+  background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--xl);
+  width:100%;max-width:600px;max-height:90vh;overflow-y:auto;padding:28px;
+  animation:modalIn .25s ease
+}
+@keyframes modalIn{from{opacity:0;transform:scale(.95)translateY(10px)}to{opacity:1;transform:scale(1)translateY(0)}}
+.modal-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.modal-hd h2{font-size:18px;font-weight:700}
+.modal-close{background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer;padding:4px;transition:color .2s}
+.modal-close:hover{color:var(--text)}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px}
+.fg input,.fg textarea,.fg select{
+  width:100%;padding:9px 12px;background:var(--input);border:1px solid var(--border);border-radius:var(--sm);
+  color:var(--text);font-size:13px;font-family:inherit;outline:none;transition:border-color .2s
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--p-400)}
+.fg textarea{resize:vertical;min-height:70px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+.wa-bar.show~.wa-btn{display:none}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* WHATSAPP FLOATING BUTTON */
+.wa-btn{
+  position:fixed;bottom:24px;right:24px;z-index:999;
+  width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,.4);
+  transition:all .3s;cursor:pointer;border:none;animation:waPulse 2s infinite;
+  text-decoration:none
+}
+.wa-btn:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,.5)}
+
+/* BLOG TIPS */
+.blog-grid{
+  display:flex;gap:16px;margin-top:20px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;padding:8px 32px 8px 28px;
+  scrollbar-width:none;
+  mask-image:linear-gradient(90deg,transparent 0,#000 20px,#000 calc(100% - 20px),transparent 100%);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 20px,#000 calc(100% - 20px),transparent 100%)
+}
+.blog-grid::-webkit-scrollbar{display:none}
+.blog-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--lg);
+  padding:0;transition:all .35s cubic-bezier(.16,1,.3,1);position:relative;display:flex;flex-direction:column;
+  box-shadow:var(--card-shadow);
+  flex:0 0 320px
+}
+.blog-card:hover{border-color:var(--p-400);transform:translateY(-3px);box-shadow:var(--glow)}
+.blog-card-img{
+  height:80px;display:flex;align-items:center;justify-content:center;
+  font-size:32px;color:var(--p-400);border-bottom:1px solid var(--border)
+}
+.blog-card-img.grn{color:var(--g-500)}
+.blog-card-img.cyn{color:var(--c-500)}
+.blog-card-img.amb{color:var(--a-500)}
+.blog-card-body{padding:12px 14px 14px}
+.blog-card-tg{
+  display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.5px;padding:2px 8px;border-radius:50px;margin-bottom:8px
+}
+.blog-card-tg.tip{background:rgba(139,92,246,.12);color:var(--p-400)}
+.blog-card-tg.cur{background:rgba(6,182,212,.12);color:var(--c-500)}
+.blog-card-tg.seg{background:rgba(16,185,129,.12);color:var(--g-500)}
+.blog-card h4{font-size:14px;font-weight:700;margin-bottom:6px;line-height:1.4}
+.blog-card p{font-size:12px;color:var(--text-muted);line-height:1.6}
+.blog-card a{color:var(--c-400);font-size:12px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-top:8px}
+.blog-card a:hover{color:var(--p-400)}
+.blog-bar{height:3px;border-radius:2px;background:var(--border);margin:16px auto 0;max-width:180px;overflow:hidden}
+.blog-bar-fill{height:100%;border-radius:2px;background:var(--p-400);transition:width .4s cubic-bezier(.16,1,.3,1);width:0%}
+
+/* HERO VISOR GLOW */
+@keyframes heroPulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.5;transform:scale(1.04)}}
+@keyframes heroRing{0%{transform:scale(1);opacity:.25}100%{transform:scale(1.35);opacity:0}}
+.hero-ring:nth-child(1){animation:heroRing 3s ease-out infinite}
+.hero-ring:nth-child(2){animation:heroRing 3s ease-out 1s infinite}
+.hero-ring:nth-child(3){animation:heroRing 3s ease-out 2s infinite}
+.hero-chip{animation:heroPulse 3s ease-in-out infinite}
+
+/* SCROLL INDICATOR FLOATING */
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.hero-scroll{animation:heroFloat 2.5s ease-in-out infinite}
+
+/* TOAST */
+.toast-c{position:fixed;bottom:80px;right:20px;z-index:3000;display:flex;flex-direction:column;gap:6px}
+.toast{
+  padding:12px 18px;border-radius:var(--md);background:var(--card);border:1px solid var(--border);
+  color:var(--text);font-size:12px;display:flex;align-items:center;gap:8px;
+  animation:ti .3s ease;min-width:260px;box-shadow:0 4px 20px rgba(0,0,0,.12)
+}
+.toast.s{border-color:var(--g-500)}.toast.e{border-color:var(--r-500)}.toast i{font-size:14px}
+.toast.s i{color:var(--g-500)}.toast.e i{color:var(--r-500)}
+@keyframes ti{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+  .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:var(--glass-scroll);border-bottom:1px solid var(--border);padding:14px}
+  .nav-toggle{display:block}
+  .fr{grid-template-columns:1fr}
+  .sv-grid.act{grid-template-columns:1fr}
+  .wa-bar-info{width:100%}
+  .wa-bar-total{width:100%;display:flex;justify-content:space-between;align-items:center}
+}
+@media(max-width:600px){
+  .section{padding:60px 16px}
+  .section#blog{padding:50px 16px}
+  .sv-card{padding:20px}
+  .modal{padding:20px}
+  .hero h1{font-size:32px}
+}
+</style>
+</head>
+<body>
+<div id="scrollProg"></div>
+<div id="bgWrap">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-fdots">
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+  </div>
+  <div class="hero-sweep"></div>
+</div>
+
+<!-- NAV -->
+<div class="navbar" id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo"><img src="https://raw.githubusercontent.com/nfuentes-cloud/NucleoByte/refs/heads/main/logo.svg" alt="NÚCLEO BYTE"></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#inicio" class="active"><i class="fas fa-home"></i>Inicio</a>
+      <a href="#catalogo"><i class="fas fa-list"></i>Servicios</a>
+      <a href="#blog"><i class="fas fa-lightbulb"></i>Tips</a>
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Cambiar tema"><i class="fas fa-moon"></i></button>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú"><i class="fas fa-bars"></i></button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-main">
+    <div class="hero-visual">
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+      <div class="hero-ring"></div>
+      <img src="https://raw.githubusercontent.com/nfuentes-cloud/NucleoByte/refs/heads/main/favicon.svg" alt="" class="hero-chip">
+    </div>
+    <div class="hero-c">
+      <h1><span>NÚCLEO BYTE</span></h1>
+      <p class="hero-sub">Tu PC, como nuevo</p>
+      <div class="hero-tags">
+        <span>Formateo</span>
+        <span>Limpieza</span>
+        <span>Office</span>
+        <span>Optimización</span>
+      </div>
+      <p class="hero-desc">Servicio técnico rápido y confiable. En tu domicilio o remoto, sin vueltas.</p>
+      <div class="hero-btns">
+        <a href="#catalogo" class="btn btn-p"><i class="fas fa-list"></i> Ver Servicios</a>
+      </div>
+    </div>
+  </div>
+  <a href="#catalogo" class="hero-scroll">
+    <div class="hero-scroll-arrow"></div>
+    <div class="hero-scroll-dots">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="hero-scroll-text">Desliza</div>
+  </a>
+</section>
+
+<!-- CATALOG -->
+<section class="section" id="catalogo">
+  <div class="section-hd">
+    <div class="section-tg"><i class="fas fa-tags"></i> Servicios</div>
+    <h2 class="section-title">Precios <span>Claros</span></h2>
+    <p class="section-sub">Tres opciones por servicio. Compara y elige la que más te acomode.</p>
+  </div>
+  <div class="cat-tabs" id="catTabs"></div>
+  <div id="svContainer"></div>
+</section>
+
+<!-- BLOG TIPS -->
+<section class="section" id="blog">
+  <div class="section-hd">
+    <div class="section-tg"><i class="fas fa-lightbulb"></i> Blog</div>
+    <h2 class="section-title">Tips <span>Informáticos</span></h2>
+    <p class="section-sub">Consejos útiles para mantener tu PC en óptimas condiciones.</p>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-card-img"><i class="fas fa-snowplow"></i></div>
+      <div class="blog-card-body">
+        <span class="blog-card-tg tip">Mantenimiento</span>
+        <h4>Limpieza física: cada cuánto y por qué</h4>
+        <p>El polvo acumulado eleva la temperatura y acorta la vida útil de los componentes. Una limpieza cada 6 meses mantiene tu PC como nuevo.</p>
+        <a href="#" onclick="selectTip(0);return false">Leer más <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-img grn"><i class="fas fa-shield-alt"></i></div>
+      <div class="blog-card-body">
+        <span class="blog-card-tg seg">Seguridad</span>
+        <h4>5 señales de que tu PC tiene malware</h4>
+        <p>Ventanas emergentes, lentitud extrema y cambios en tu navegador son alertas claras. Actúa a tiempo para evitar pérdida de datos.</p>
+        <a href="#" onclick="selectTip(1);return false">Leer más <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-img cyn"><i class="fas fa-tachometer-alt"></i></div>
+      <div class="blog-card-body">
+        <span class="blog-card-tg cur">Optimización</span>
+        <h4>Programas que siempre debes tener instalados</h4>
+        <p>Navegador seguro, antivirus ligero, suite de office y un buen bloqueador de anuncios. Te contamos cuáles y por qué.</p>
+        <a href="#" onclick="selectTip(2);return false">Leer más <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-img amb"><i class="fas fa-clock"></i></div>
+      <div class="blog-card-body">
+        <span class="blog-card-tg tip">Rendimiento</span>
+        <h4>SSD vs HDD: vale la pena el cambio</h4>
+        <p>Un SSD puede hacer que tu PC de 10 años funcione como nueva. El cambio es sencillo y los precios hoy son muy accesibles.</p>
+        <a href="#" onclick="selectTip(3);return false">Leer más <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-img grn"><i class="fas fa-tachometer-alt"></i></div>
+      <div class="blog-card-body">
+        <span class="blog-card-tg cur">Sistema</span>
+        <h4>Cómo acelerar Windows sin gastar dinero</h4>
+        <p>Deshabilitar programas de inicio, limpiar archivos temporales y ajustar efectos visuales puede darle una segunda vida a cualquier PC. Todo gratis y en minutos.</p>
+        <a href="#" onclick="selectTip(4);return false">Leer más <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-img amb"><i class="fas fa-exclamation-triangle"></i></div>
+      <div class="blog-card-body">
+        <span class="blog-card-tg tip">Problemas</span>
+        <h4>Pantalla azul: causas y soluciones</h4>
+        <p>Los errores de pantalla azul suelen deberse a drivers corruptos, memoria RAM defectuosa o sobrecalentamiento. Te enseñamos a identificar la causa.</p>
+        <a href="#" onclick="selectTip(5);return false">Leer más <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="blog-bar" id="blogBar"><div class="blog-bar-fill" id="blogBarFill"></div></div>
+</section>
+
+<!-- WHATSAPP BAR -->
+<div class="wa-bar" id="waBar">
+  <div class="wa-bar-inner">
+    <div class="wa-bar-info" id="waBarInfo"></div>
+    <div class="wa-bar-total">
+      <div class="label">Cotización</div>
+      <div class="amount" id="waTotal">$0</div>
+    </div>
+    <a class="btn btn-wa" id="waBtn" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-over" id="modalOver">
+  <div class="modal" id="modalContent">
+    <div class="modal-hd">
+      <h2 id="modalTitle">Título</h2>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- TOASTS -->
+<div class="toast-c" id="toastC"></div>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a class="wa-btn" id="waFloatBtn" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+// ================================================================
+// DATA
+// ================================================================
+let catalogo = {servicios:[]};
+let selected = null;
+
+// ================================================================
+// INIT
+// ================================================================
+async function init(){
+  window.scrollTo(0,0);
+  renderCat();
+  setupNav();
+  await loadPrecios();
+  window.scrollTo(0,0);
+}
+init();
+
+// ================================================================
+// PRICE LOADING
+// ================================================================
+async function loadPrecios(){
+  try{
+    const r=await fetch('https://raw.githubusercontent.com/nfuentes-cloud/NucleoByte/refs/heads/main/precios.json');
+    if(r.ok){const d=await r.json();if(d.servicios?.length){catalogo=d;renderCat();setWAFloat();return}}
+  }catch(e){}
+  renderCat();
+}
+
+// ================================================================
+// RENDER CATALOG
+// ================================================================
+function renderCat(){
+  const tabs=document.getElementById('catTabs');
+  const cont=document.getElementById('svContainer');
+  const sv=catalogo.servicios;
+  if(!sv||!sv.length){cont.innerHTML='<p style="text-align:center;color:var(--text-muted);padding:40px 0">Cargando servicios...</p>';return}
+  tabs.innerHTML=sv.map((s,i)=>`<button class="cat-tab ${i===0?'act':''}" onclick="switchCat(${i})"><i class="fas ${s.icono||'fa-wrench'}"></i> ${s.categoria}</button>`).join('');
+  cont.innerHTML=sv.map((s,i)=>`<div class="sv-grid ${i===0?'act':''}" id="catG${i}">${s.items.map(item=>cardHTML(item,i)).join('')}</div>`).join('');
+}
+
+function cardHTML(item,catIdx){
+  const prem=item.estrella?'premium':'';
+  const ft=(item.incluye||[]).map(f=>`<li><i class="fas fa-check ck"></i> ${f}</li>`).join('');
+  const miss=(item.no_incluye||[]).map(f=>`<li><i class="fas fa-times cr"></i> ${f}</li>`).join('');
+  const dst=item.destacado?`<div class="sv-dstc"><i class="fas fa-star"></i> ${item.destacado}</div>`:'';
+  return `<div class="sv-card ${prem}">
+    <div class="sv-card-hd">
+      <div class="sv-name">${item.nombre}</div>
+      <div class="sv-price"><span class="cur">$</span>${item.precio.toLocaleString('es-CL')}</div>
+    </div>
+    <div class="sv-desc">${item.descripcion}</div>
+    <ul class="sv-ft">${ft}${miss}</ul>
+    ${dst}
+    <button class="sv-btn" onclick="selectService(${catIdx},'${item.nombre.replace(/'/g,"\\'")}',${item.precio},'${catalogo.servicios[catIdx].categoria.replace(/'/g,"\\'")}')"><i class="fas fa-check-circle"></i> Elegir</button>
+  </div>`;
+}
+
+function switchCat(i){
+  document.querySelectorAll('.cat-tab').forEach((t,j)=>t.classList.toggle('act',j===i));
+  document.querySelectorAll('.sv-grid').forEach((g,j)=>g.classList.toggle('act',j===i));
+}
+
+// ================================================================
+// SELECT SERVICE → WHATSAPP
+// ================================================================
+function selectService(catIdx,name,price,category){
+  const bar=document.getElementById('waBar');
+  if(selected&&selected.name===name){
+    selected=null;
+    bar.classList.remove('show');
+    document.body.style.paddingBottom='';
+    document.getElementById('catalogo').style.paddingBottom='80px';
+    document.getElementById('waBtn').href='#';
+    event.target.innerHTML='<i class="fas fa-check-circle"></i> Elegir';
+    event.target.classList.remove('selected');
+    return;
+  }
+  selected={catIdx,name,price,category};
+  const tel=(catalogo.empresa?.contacto?.telefono||'').replace(/[^0-9]/g,'');
+  const msg=`¡Hola!%20Quiero%20el%20servicio%20*${encodeURIComponent(name)}*%20(${encodeURIComponent(category)})%20por%20$${price.toLocaleString('es-CL')}.%20¿Me%20puedes%20ayudar?`;
+  const href=`https://wa.me/${tel||'56957546492'}?text=${msg}`;
+  document.getElementById('waBtn').href=href;
+  document.getElementById('waBarInfo').innerHTML=`<div class="wa-bar-badge"><i class="fas fa-check-circle"></i> ${name} <span class="cat">(${category})</span></div>`;
+  document.getElementById('waTotal').textContent='$'+price.toLocaleString('es-CL');
+  bar.classList.add('show');
+  document.body.style.paddingBottom='72px';
+  document.getElementById('catalogo').style.paddingBottom='136px';
+  document.querySelectorAll('.sv-btn').forEach(b=>{
+    b.innerHTML='<i class="fas fa-check-circle"></i> Elegir';
+    b.classList.remove('selected');
+  });
+  event.target.innerHTML='<i class="fas fa-check"></i> Elegido';
+  event.target.classList.add('selected');
+}
+
+// ================================================================
+// THEME
+// ================================================================
+function initTheme(){
+  const dk=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  const ic=document.querySelector('#themeBtn i');
+  if(ic)ic.className=dk?'fas fa-moon':'fas fa-sun';
+  document.body.removeAttribute('data-theme');
+}
+function toggleTheme(){
+  const ov=document.body.hasAttribute('data-theme');
+  if(!ov){
+    const dk=window.matchMedia('(prefers-color-scheme:dark)').matches;
+    const t=dk?'light':'dark';
+    document.body.setAttribute('data-theme',t);
+    const ic=document.querySelector('#themeBtn i');
+    if(ic)ic.className=t==='dark'?'fas fa-moon':'fas fa-sun';
+  }else{
+    document.body.removeAttribute('data-theme');
+    const dk=window.matchMedia('(prefers-color-scheme:dark)').matches;
+    const ic=document.querySelector('#themeBtn i');
+    if(ic)ic.className=dk?'fas fa-moon':'fas fa-sun';
+  }
+}
+initTheme();
+
+// ================================================================
+// WHATSAPP WIDGET
+// ================================================================
+const TIPS=[
+  'Limpieza física: cada cuánto y por qué\nEl polvo acumulado dentro del PC actúa como aislante térmico, elevando la temperatura de la CPU y GPU hasta un 20%. Esto no solo reduce el rendimiento, sino que acorta la vida útil de los componentes. Se recomienda una limpieza profunda cada 6 meses (o cada 3 si tienes mascotas o el PC está en el suelo). Incluye soplado de ventiladores, limpieza de disipadores y cambio de pasta térmica si es necesario.',
+  '5 señales de que tu PC tiene malware\n1) Ventanas emergentes constantes incluso sin navegar. 2) El navegador redirige a sitios que no pediste. 3) El antivirus está desactivado sin motivo. 4) La PC funciona lenta incluso en tareas básicas. 5) Aparecen programas que no recuerdas haber instalado. Si reconoces al menos dos, es hora de un análisis profundo o un formateo.',
+  'Programas que siempre debes tener instalados\nUn navegador seguro (Chrome o Edge con bloqueador de anuncios), un antivirus ligero (Windows Defender basta si está actualizado), una suite de office (Microsoft 365 o LibreOffice), un lector de PDF (Edge ya lo trae), y un buen descompresor (7-Zip es gratuito y sin publicidad). Con eso cubres el 90% del uso diario.',
+  'SSD vs HDD: vale la pena el cambio\nUn SSD es hasta 10 veces más rápido que un HDD tradicional. El sistema operativo arranca en segundos, los programas abren al instante y el equipo en general se siente mucho más fluido. Hoy puedes conseguir un SSD de 480GB por alrededor de $20.000. La instalación es sencilla y el cambio es el upgrade más rentable para cualquier PC.',
+  'Cómo acelerar Windows sin gastar dinero\n1) Deshabilita programas de inicio desde el Administrador de tareas. 2) Ejecuta "Liberador de espacio" para borrar archivos temporales. 3) Desactiva efectos visuales desde Configuración > Sistema > Acerca de > Configuración avanzada > Rendimiento. 4) Desfragmenta el disco si usas HDD (no hagas esto en SSD). 5) Mantén Windows actualizado. Estos pasos pueden recuperar hasta un 40% de rendimiento sin gastar un peso.',
+  'Pantalla azul: causas y soluciones\nLos STOP errors (pantalla azul) suelen deberse a: 1) Drivers corruptos o incompatibles — inicia en modo seguro y actualiza o revierte el driver recién instalado. 2) Memoria RAM defectuosa — ejecuta "Memtest86" para verificarla. 3) Sobrecalentamiento — revisa la temperatura de CPU/GPU con HWMonitor. 4) Disco dañado — ejecuta "chkdsk /f" en el símbolo del sistema. Si el error persiste, anota el código y busca la solución específica.'
+];
+function setWAFloat(){
+  const tel=((catalogo.empresa?.contacto?.telefono)||'+56 9 5754 6492').replace(/[^0-9]/g,'');
+  const msg=encodeURIComponent('¡Hola! Quiero consultar por sus servicios.');
+  document.getElementById('waFloatBtn').href=`https://wa.me/${tel}?text=${msg}`;
+}
+function selectTip(i){
+  document.getElementById('modalTitle').textContent='💡 '+TIPS[i].split('\n')[0];
+  document.getElementById('modalBody').innerHTML='<div style="font-size:13px;line-height:1.8;color:var(--text);white-space:pre-wrap">'+TIPS[i]+'</div><button class="btn btn-gh btn-sm" onclick="closeModal()" style="margin-top:16px;width:100%;justify-content:center">Cerrar</button>';
+  openModal()
+}
+
+// ================================================================
+// MODAL
+// ================================================================
+function openModal(){document.getElementById('modalOver').classList.add('open')}
+function closeModal(){document.getElementById('modalOver').classList.remove('open')}
+document.getElementById('modalOver').addEventListener('click',function(e){if(e.target===this)closeModal()});
+
+// ================================================================
+// TOAST
+// ================================================================
+function toast(msg,type='info'){
+  const ic={s:'fa-check-circle',e:'fa-exclamation-circle',info:'fa-info-circle'};
+  const el=document.createElement('div');el.className=`toast ${type}`;
+  el.innerHTML=`<i class="fas ${ic[type]||ic.info}"></i> ${msg}`;
+  document.getElementById('toastC').appendChild(el);
+  setTimeout(()=>{el.style.opacity='0';setTimeout(()=>el.remove(),300)},3000)
+}
+
+// ================================================================
+// NAV
+// ================================================================
+function setupNav(){
+  const nav=document.getElementById('navbar'),links=document.querySelectorAll('.nav-links a'),toggle=document.getElementById('navToggle');
+  const secs=[...document.querySelectorAll('.section,.hero')];
+  function upd(){
+    let cur='inicio';
+    secs.forEach(s=>{const r=s.getBoundingClientRect();if(r.top<window.innerHeight*.5)cur=s.id||'inicio'});
+    links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))
+  }
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+  toggle.addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+  links.forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+  window.addEventListener('scroll',upd,{passive:true});
+  upd()
+}
+
+// ================================================================
+// SCROLL MAGIC (Apple‑style parallax + progress)
+// ================================================================
+const heroBg=document.querySelector('#bgWrap .hero-bg');
+const heroGrid=document.querySelector('#bgWrap .hero-grid');
+const heroOrbs=document.querySelectorAll('#bgWrap .hero-orb');
+const heroVis=document.querySelector('.hero-visual');
+const heroC=document.querySelector('.hero .hero-c');
+const heroScroll=document.querySelector('.hero-scroll');
+const progBar=document.getElementById('scrollProg');
+
+function onScroll(){
+  const sy=window.scrollY;
+  const wh=window.innerHeight;
+  const docH=document.documentElement.scrollHeight;
+
+  // Progress bar
+  progBar.style.width=Math.min((sy/(docH-wh))*100,100)+'%';
+
+  // Global background parallax (subtle drift)
+  const tGlob=Math.min(sy/(docH-wh),1);
+  if(heroBg)heroBg.style.transform=`translateY(${tGlob*20}px)`;
+  if(heroGrid)heroGrid.style.transform=`translateY(${tGlob*12}px)`;
+  heroOrbs.forEach((o,i)=>o.style.transform=`translateY(${-tGlob*(8+i*5)}px)`);
+
+  // Hero content parallax (only while hero is visible)
+  if(sy<wh){
+    const t=sy/wh;
+    if(heroVis)heroVis.style.transform=`translateY(${-t*30}px) scale(${1-t*.06})`;
+    if(heroC)heroC.style.transform=`translateY(${-t*12}px)`;
+    if(heroScroll)heroScroll.style.opacity=1-t*3;
+  }else{
+    if(heroVis)heroVis.style.transform='';
+    if(heroC)heroC.style.transform='';
+    if(heroScroll)heroScroll.style.opacity='';
+  }
+}
+
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+
+// ================================================================
+// BLOG CAROUSEL — auto‑play inteligente (solo si visible)
+// ================================================================
+(function(){
+  const grid=document.querySelector('.blog-grid');
+  if(!grid)return;
+  const cards=grid.querySelectorAll('.blog-card');
+  if(!cards.length)return;
+  let idx=0,interval;
+  const bar=document.getElementById('blogBarFill');
+  if(!bar)return;
+
+  function snapBar(){bar.style.width=((idx+1)/cards.length*100)+'%'}
+
+  function next(){
+    idx=(idx+1)%cards.length;
+    grid.scrollTo({left:cards[idx].offsetLeft,behavior:'smooth'});
+  }
+  function start(){if(!interval){interval=setInterval(next,3000);snapBar()}}
+  function stop(){clearInterval(interval);interval=null}
+
+  // Barra desde el scroll (progreso sobre el ancho real)
+  const step=cards[0].offsetWidth+16;
+  grid.addEventListener('scroll',()=>{
+    const max=grid.scrollWidth-grid.clientWidth;
+    const pct=max?Math.min(grid.scrollLeft/max,1):0;
+    bar.style.width=(pct*100)+'%';
+    const i=Math.min(Math.round(grid.scrollLeft/step),cards.length-1);
+    if(i>=0&&i!==idx)idx=i;
+  },{passive:true});
+
+  // Pausa al hover, reanuda al salir
+  grid.addEventListener('mouseenter',stop);
+  grid.addEventListener('mouseleave',start);
+
+  // Solo corre cuando la sección blog está visible
+  const blogSec=document.getElementById('blog');
+  new IntersectionObserver(entries=>{
+    entries.forEach(e=>e.isIntersecting?start():stop())
+  },{threshold:.3}).observe(blogSec);
+})();
+</script>
+</body>
+</html>
