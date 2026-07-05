@@ -1,0 +1,266 @@
+{
+  "empresa": {
+    "nombre": "NÚCLEO BYTE",
+    "eslogan": "Servicios Informáticos Profesionales",
+    "contacto": {
+      "telefono": "+56 9 5754 6492",
+      "email": "nfuentes@live.cl",
+      "direccion": "Fernandez Albano 637"
+    },
+    "banco": {
+      "titular": "Nelson David Fuentes Alegria",
+      "rut": "18.465.975-1",
+      "cuenta": "Chequera Electrónica",
+      "numero": "0 017 14 10278 4",
+      "banco": "Banco Santander",
+      "email": "NFUENTES@LIVE.CL"
+    }
+  },
+  "servicios": [
+    {
+      "id": "formateo",
+      "categoria": "Formateo + Windows",
+      "icono": "fa-window-maximize",
+      "items": [
+        {
+          "nombre": "Formateo Básico",
+          "precio": 25000,
+          "descripcion": "Formateo limpio + instalación de Windows con drivers.",
+          "incluye": ["Formateo completo", "Windows con drivers", "Programas básicos"],
+          "no_incluye": ["Respaldo de archivos", "Optimización", "Soporte posterior"],
+          "tipo": "basico",
+          "estrella": false
+        },
+        {
+          "nombre": "Formateo Intermedio",
+          "precio": 37000,
+          "descripcion": "Formateo + Windows con respaldo completo de archivos.",
+          "incluye": ["Formateo completo", "Windows con drivers", "Respaldo completo de archivos"],
+          "no_incluye": ["Windows original", "Optimización", "Soporte posterior"],
+          "tipo": "señuelo",
+          "estrella": false
+        },
+        {
+          "nombre": "Completo NÚCLEO BYTE",
+          "precio": 47000,
+          "descripcion": "Formateo + Windows 11 PRO OEM original + Optimización + 30 días de soporte.",
+          "incluye": [
+            "Formateo completo",
+            "Windows 11 PRO OEM (licencia original $9.990)",
+            "Respaldo completo de archivos",
+            "Optimización profunda del sistema",
+            "30 días de asistencia remota"
+          ],
+          "no_incluye": [],
+          "tipo": "estrella",
+          "estrella": true,
+          "destacado": "Por solo $10.000 más que la opción intermedia llevas Windows original + optimización + soporte 30 días."
+        }
+      ]
+    },
+    {
+      "id": "mantenimiento",
+      "categoria": "Mantenimiento Físico",
+      "icono": "fa-tools",
+      "items": [
+        {
+          "nombre": "Mantenimiento Exprés",
+          "precio": 15000,
+          "descripcion": "Soplado de ventiladores + limpieza externa rápida.",
+          "incluye": ["Soplado de ventiladores", "Limpieza externa", "Revisión visual"],
+          "no_incluye": ["Desarmado completo", "Pasta térmica", "Test de estrés"],
+          "tipo": "basico",
+          "estrella": false
+        },
+        {
+          "nombre": "Mantenimiento Completo",
+          "precio": 25000,
+          "descripcion": "Desarmado + limpieza profunda + cambio de pasta térmica.",
+          "incluye": ["Desarmado completo", "Limpieza profunda interna", "Cambio de pasta térmica"],
+          "no_incluye": ["Pasta térmica premium", "Test de estrés", "Optimización gamer"],
+          "tipo": "señuelo",
+          "estrella": false
+        },
+        {
+          "nombre": "Mantenimiento Gamer PRO",
+          "precio": 35000,
+          "descripcion": "Limpieza total + pasta premium + test de estrés + optimización gamer.",
+          "incluye": [
+            "Desarmado completo",
+            "Limpieza profunda",
+            "Pasta térmica premium",
+            "Test de estrés con benchmark",
+            "Actualización de drivers",
+            "Optimización gamer"
+          ],
+          "no_incluye": [],
+          "tipo": "estrella",
+          "estrella": true,
+          "destacado": "Por solo $10.000 más que el mantenimiento completo tienes pasta premium, test de estrés y optimización gamer."
+        }
+      ]
+    },
+    {
+      "id": "optimizacion",
+      "categoria": "Optimización de Sistema",
+      "icono": "fa-rocket",
+      "items": [
+        {
+          "nombre": "Optimización Rápida",
+          "precio": 10000,
+          "descripcion": "Limpieza de archivos basura + optimización de inicio.",
+          "incluye": ["Eliminación de archivos basura", "Optimización de inicio", "Limpieza temporal"],
+          "no_incluye": ["Eliminación de malware", "Office 2024", "Soporte remoto"],
+          "tipo": "basico",
+          "estrella": false
+        },
+        {
+          "nombre": "Optimización Profesional",
+          "precio": 18000,
+          "descripcion": "Limpieza + eliminación de malware + ajuste de servicios.",
+          "incluye": ["Limpieza de archivos basura", "Eliminación de malware", "Ajuste de servicios de Windows"],
+          "no_incluye": ["Office 2024", "Soporte remoto 30 días"],
+          "tipo": "señuelo",
+          "estrella": false
+        },
+        {
+          "nombre": "Optimización Completa",
+          "precio": 28000,
+          "descripcion": "Optimización profunda + Office 2024 activado + bloqueador de anuncios + 30 días de soporte.",
+          "incluye": [
+            "Optimización profunda del sistema",
+            "Office 2024 activado ($8.490)",
+            "Bloqueador de anuncios",
+            "30 días de soporte remoto"
+          ],
+          "no_incluye": [],
+          "tipo": "estrella",
+          "estrella": true,
+          "destacado": "Por solo $10.000 más que la profesional llevas Office activado + soporte remoto."
+        }
+      ]
+    },
+    {
+      "id": "office",
+      "categoria": "Instalación de Office 2024",
+      "icono": "fa-file-word",
+      "items": [
+        {
+          "nombre": "Office 2024",
+          "precio": 25000,
+          "descripcion": "Office 2024 activado con licencia permanente.",
+          "incluye": ["Office 2024 activado (Word, Excel, PPT)", "Instalación remota o presencial"],
+          "no_incluye": ["Configuración de correo", "Respaldo", "Soporte"],
+          "tipo": "basico",
+          "estrella": false
+        },
+        {
+          "nombre": "Office + Configuración",
+          "precio": 30000,
+          "descripcion": "Office 2024 activado + configuración de correo y Outlook.",
+          "incluye": ["Office 2024 activado", "Configuración de correo", "Configuración de Outlook", "Marcadores"],
+          "no_incluye": ["Respaldo", "Optimización", "Soporte 30 días"],
+          "tipo": "señuelo",
+          "estrella": false
+        },
+        {
+          "nombre": "Office + Respaldo + Optimización",
+          "precio": 35000,
+          "descripcion": "Office activado + respaldo de documentos + optimización + 30 días de soporte.",
+          "incluye": [
+            "Office 2024 activado",
+            "Respaldo de documentos importantes",
+            "Optimización del sistema",
+            "30 días de soporte"
+          ],
+          "no_incluye": [],
+          "tipo": "estrella",
+          "estrella": true,
+          "destacado": "Todo incluido: Office, respaldo, optimización y soporte por solo $35.000."
+        }
+      ]
+    },
+    {
+      "id": "asistencia",
+      "categoria": "Asistencia Remota",
+      "icono": "fa-headset",
+      "items": [
+        {
+          "nombre": "Solución Express",
+          "precio": 10000,
+          "descripcion": "1 problema específico resuelto vía remota.",
+          "incluye": ["1 problema específico", "Conexión por AnyDesk"],
+          "no_incluye": ["Asistencias adicionales", "Atención prioritaria"],
+          "tipo": "basico",
+          "estrella": false
+        },
+        {
+          "nombre": "Pack 3 Asistencias",
+          "precio": 22000,
+          "descripcion": "3 asistencias remotas válidas por 1 mes.",
+          "incluye": ["3 asistencias remotas", "Válido por 1 mes"],
+          "no_incluye": ["Atención prioritaria"],
+          "tipo": "señuelo",
+          "estrella": false
+        },
+        {
+          "nombre": "Pack 5 Asistencias VIP",
+          "precio": 35000,
+          "descripcion": "5 asistencias + atención prioritaria válido por 2 meses.",
+          "incluye": [
+            "5 asistencias remotas",
+            "Atención prioritaria",
+            "Válido por 2 meses"
+          ],
+          "no_incluye": [],
+          "tipo": "estrella",
+          "estrella": true,
+          "destacado": "Por solo $13.000 más que el Pack 3 llevas 2 asistencias extra + atención prioritaria."
+        }
+      ]
+    },
+    {
+      "id": "combo",
+      "categoria": "COMBO FULL",
+      "icono": "fa-gem",
+      "items": [
+        {
+          "nombre": "Combo Básico",
+          "precio": 35000,
+          "descripcion": "Formateo + Office 2024.",
+          "incluye": ["Formateo completo", "Office 2024 activado"],
+          "no_incluye": ["Windows original", "Limpieza física", "Optimización", "Soporte"],
+          "tipo": "basico",
+          "estrella": false
+        },
+        {
+          "nombre": "Combo Intermedio",
+          "precio": 57000,
+          "descripcion": "Formateo + Windows 11 PRO OEM + Office 2024.",
+          "incluye": ["Formateo completo", "Windows 11 PRO OEM ($9.990)", "Office 2024 ($8.490)"],
+          "no_incluye": ["Limpieza física", "Optimización", "Soporte"],
+          "tipo": "señuelo",
+          "estrella": false
+        },
+        {
+          "nombre": "COMBO FULL NÚCLEO BYTE",
+          "precio": 75000,
+          "descripcion": "¡El pack completo! Formateo + Windows + Office + Limpieza + Optimización + Soporte.",
+          "incluye": [
+            "Formateo completo",
+            "Windows 11 PRO OEM (licencia original)",
+            "Office 2024 activado",
+            "Limpieza física + pasta térmica",
+            "Optimización profunda",
+            "30 días de soporte remoto",
+            "Entrega en 24h"
+          ],
+          "no_incluye": [],
+          "tipo": "estrella",
+          "estrella": true,
+          "destacado": "Por solo $18.000 más que el intermedio llevas limpieza física + optimización + soporte + entrega rápida. ¡La mejor elección!"
+        }
+      ]
+    }
+  ]
+}
