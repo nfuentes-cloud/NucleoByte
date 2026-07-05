@@ -272,8 +272,8 @@
            fill="none"
            stroke="url(#gM)"
            stroke-width="3"
-           opacity="0.35"
-           id="rect1"
+         opacity="0.75"
+            id="rect1"
            style="stroke:url(#linearGradient28)" />
         <rect
            x="34"
@@ -284,8 +284,8 @@
            fill="url(#gD)"
            stroke="url(#gM)"
            stroke-width="1.5"
-           opacity="0.55"
-           id="rect2"
+         opacity="0.8"
+            id="rect2"
            style="fill:url(#gD);stroke:url(#linearGradient29)" />
         <rect
            x="44"
@@ -294,7 +294,7 @@
            height="32"
            rx="4"
            fill="url(#gM)"
-           fill-opacity="0.3"
+           fill-opacity="0.55"
            filter="url(#glS)"
            id="rect3"
            style="fill:url(#linearGradient30)" />
@@ -305,7 +305,7 @@
            height="32"
            rx="4"
            fill="url(#gM)"
-           fill-opacity="0.5"
+           fill-opacity="0.75"
            id="rect4"
            style="fill:url(#linearGradient31)" />
         <circle
@@ -322,7 +322,7 @@
            height="6"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.35"
+           opacity="0.55"
            id="rect5" />
         <rect
            x="41"
@@ -331,7 +331,7 @@
            height="6"
            rx="1.5"
            fill="#06b6d4"
-           opacity="0.6"
+           opacity="0.75"
            id="rect6" />
         <rect
            x="52"
@@ -358,7 +358,7 @@
            height="6"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.6"
+           opacity="0.75"
            id="rect9" />
         <rect
            x="85"
@@ -367,7 +367,7 @@
            height="6"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.35"
+           opacity="0.55"
            id="rect10" />
         <rect
            x="30"
@@ -376,7 +376,7 @@
            height="6"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.35"
+           opacity="0.55"
            id="rect11" />
         <rect
            x="41"
@@ -385,7 +385,7 @@
            height="6"
            rx="1.5"
            fill="#06b6d4"
-           opacity="0.6"
+           opacity="0.75"
            id="rect12" />
         <rect
            x="52"
@@ -412,7 +412,7 @@
            height="6"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.6"
+           opacity="0.75"
            id="rect15" />
         <rect
            x="85"
@@ -421,7 +421,7 @@
            height="6"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.35"
+           opacity="0.55"
            id="rect16" />
         <rect
            x="12"
@@ -430,7 +430,7 @@
            height="5"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.35"
+           opacity="0.55"
            id="rect17" />
         <rect
            x="12"
@@ -439,7 +439,7 @@
            height="5"
            rx="1.5"
            fill="#06b6d4"
-           opacity="0.6"
+           opacity="0.75"
            id="rect18" />
         <rect
            x="12"
@@ -466,7 +466,7 @@
            height="5"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.6"
+           opacity="0.75"
            id="rect21" />
         <rect
            x="12"
@@ -475,7 +475,7 @@
            height="5"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.35"
+           opacity="0.55"
            id="rect22" />
         <rect
            x="102"
@@ -484,7 +484,7 @@
            height="5"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.35"
+           opacity="0.55"
            id="rect23" />
         <rect
            x="102"
@@ -493,7 +493,7 @@
            height="5"
            rx="1.5"
            fill="#06b6d4"
-           opacity="0.6"
+           opacity="0.75"
            id="rect24" />
         <rect
            x="102"
@@ -520,7 +520,7 @@
            height="5"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.6"
+           opacity="0.75"
            id="rect27" />
         <rect
            x="102"
@@ -529,7 +529,7 @@
            height="5"
            rx="1.5"
            fill="#8b5cf6"
-           opacity="0.35"
+           opacity="0.55"
            id="rect28" />
       </g>
     </g>
